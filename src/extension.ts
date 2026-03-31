@@ -9,7 +9,7 @@ export async function activate(context: vscode.ExtensionContext) {
     // --- 1. 初期設定 ---
     // src/extension.ts 内の初期化部分
     const config: CCPConfig = {
-        templatePrompt: "以下のコードの文脈を理解して、質問に答えてください。",
+        templatePrompt: "Please analyze the context of the following code and answer the questions accordingly.",
         ignorePatterns: ['node_modules', '.git', 'out', 'dist', '.vscode', '.DS_Store'],
         softIgnorePatterns: ['.env', 'package-lock.json', 'yarn.lock', 'ccp_ver*.txt'],
         options: { 
