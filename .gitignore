@@ -1,0 +1,19 @@
+# Node
+node_modules/
+
+# Build output
+out/
+dist/
+
+# VSCode
+.vscode/
+.vscode-test/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+
+# CCP output
+ccp_ver*.txt
