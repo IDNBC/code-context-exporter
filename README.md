@@ -217,3 +217,15 @@ Estimated Tokens: ~XXXX
 MIT License
 
 本ソフトウェアは自由に利用・改変・再配布が可能です。
+
+
+## Screenshots
+
+### Export Codes 1
+![Extension Sidebar](assets/exporter_1.png)
+
+### Export Codes 2
+![Generate Prompt](assets/exporter_2.png)
+
+### AI Prompt Example
+![AI Prompt Example](assets/exporter_3.png)
