@@ -1,6 +1,6 @@
 {
-  "name": "code-context-protocol",
-  "displayName": "Code Context Protocol",
+  "name": "code-context-exporter",
+  "displayName": "Code Context Exporter",
   "version": "0.0.1",
   "engines": {
     "vscode": "^1.80.0"
@@ -14,7 +14,7 @@
       "activitybar": [
         {
           "id": "ccp-explorer",
-          "title": "CCP",
+          "title": "CCE",
           "icon": "$(references)"
         }
       ]
@@ -23,7 +23,7 @@
       "ccp-explorer": [
         {
           "id": "ccp-view",
-          "name": "Context Explorer",
+          "name": "Context Exporter",
           "canCollapseAll": false
         }
       ]
