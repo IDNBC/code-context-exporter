@@ -48,11 +48,6 @@
         "command": "ccp.refresh",
         "title": "Refresh",
         "icon": "$(refresh)"
-      },
-      {
-      "command": "ccp.toggleRemoveComments",
-      "title": "コメント削除を切り替え",
-      "icon": "$(comment-discussion)" 
       }
     ],
     "menus": {
@@ -61,11 +56,6 @@
         "command": "ccp.runGenerate",
         "when": "view == ccp-view",
         "group": "navigation@0"
-        },
-        {
-        "command": "ccp.toggleRemoveComments",
-        "when": "view == ccp-view",
-        "group": "navigation@1"
         },
         {
           "command": "ccp.selectAll",

@@ -116,20 +116,6 @@ export async function activate(context: vscode.ExtensionContext) {
             addAll(model.tree);
             treeDataProvider.refresh(model.tree);
         }),
-        
-        vscode.commands.registerCommand('ccp.toggleRemoveComments', () => {
-            config.options.removeComments = !config.options.removeComments;
-            
-            const status = config.options.removeComments ? "ON" : "OFF";
-            vscode.window.showInformationMessage(`CCP: コメント削除モードを ${status} にしました。`);
-            
-            // 必要ならアイコンの状態を更新するためにツリーをリフレッシュ（任意）
-            // treeDataProvider.refresh(model?.tree); 
-        }),
-        // vscode.commands.registerCommand('ccp.clearAll', () => {
-        //     uiState.selectedPaths.clear();
-        //     if (model) treeDataProvider.refresh(model.tree);
-        // })
         // --- selectAll コマンドの書き換え例 ---
         vscode.commands.registerCommand('ccp.selectAll', () => {
             if (!model) return;
