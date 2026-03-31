@@ -1,8 +1,9 @@
 {
   "name": "code-context-exporter",
   "displayName": "Code Context Exporter",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "iida-nobuchiyo",
+  "icon": "assets/CodeExporter.png",
   "repository": {
   "type": "git",
   "url": "https://github.com/IDNBC/code-context-exporter.git"
