@@ -1,0 +1,99 @@
+{
+  "name": "code-context-Exporter",
+  "displayName": "Code Context Exporter",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "main": "./out/extension.js",
+  "activationEvents": [
+    "onView:ccp-view"
+  ],
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "ccp-explorer",
+          "title": "CCP",
+          "icon": "$(references)"
+        }
+      ]
+    },
+    "views": {
+      "ccp-explorer": [
+        {
+          "id": "ccp-view",
+          "name": "Context Explorer",
+          "canCollapseAll": false
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "ccp.runGenerate",
+        "title": "Generate Prompt",
+        "icon": "$(play)"
+      },
+      {
+        "command": "ccp.selectAll",
+        "title": "Select All",
+        "icon": "$(checklist)"
+      },
+      {
+        "command": "ccp.clearAll",
+        "title": "Clear All",
+        "icon": "$(circle-slash)"
+      },
+      {
+        "command": "ccp.refresh",
+        "title": "Refresh",
+        "icon": "$(refresh)"
+      },
+      {
+      "command": "ccp.toggleRemoveComments",
+      "title": "コメント削除を切り替え",
+      "icon": "$(comment-discussion)" 
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+        "command": "ccp.runGenerate",
+        "when": "view == ccp-view",
+        "group": "navigation@0"
+        },
+        {
+        "command": "ccp.toggleRemoveComments",
+        "when": "view == ccp-view",
+        "group": "navigation@1"
+        },
+        {
+          "command": "ccp.selectAll",
+          "group": "navigation@2",
+          "when": "view == ccp-view"
+        },
+        {
+          "command": "ccp.clearAll",
+          "group": "navigation@3", 
+          "when": "view == ccp-view"
+        },
+        {
+          "command": "ccp.refresh",
+          "group": "navigation@4",
+          "when": "view == ccp-view"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.80.0",
+    "@types/node": "18.x",
+    "typescript": "^5.0.0"
+  }
+}
