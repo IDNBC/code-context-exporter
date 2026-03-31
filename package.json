@@ -2,6 +2,10 @@
   "name": "code-context-exporter",
   "displayName": "Code Context Exporter",
   "version": "0.0.1",
+  "repository": {
+  "type": "git",
+  "url": "https://github.com/IDNBC/code-context-exporter.git"
+  },
   "engines": {
     "vscode": "^1.80.0"
   },
