@@ -107,15 +107,7 @@ export async function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(
         vscode.commands.registerCommand('ccp.runGenerate', runGenerate),
         vscode.commands.registerCommand('ccp.refresh', refreshTree),
-        vscode.commands.registerCommand('ccp.selectAll', () => {
-            if (!model) return;
-            const addAll = (node: any) => {
-                if (node.type === "file") uiState.selectedPaths.add(node.path);
-                node.children?.forEach(addAll);
-            };
-            addAll(model.tree);
-            treeDataProvider.refresh(model.tree);
-        }),
+        
         // --- selectAll コマンドの書き換え例 ---
         vscode.commands.registerCommand('ccp.selectAll', () => {
             if (!model) return;
@@ -127,7 +119,13 @@ export async function activate(context: vscode.ExtensionContext) {
             
             allPaths.forEach(p => uiState.selectedPaths.add(p));
             treeDataProvider.refresh(model.tree);
+        }),
+        vscode.commands.registerCommand('ccp.clearAll', () => {
+            if (!model) return;
+            uiState.selectedPaths.clear();
+            treeDataProvider.refresh(model.tree);
         })
+        
     );
 }
 
