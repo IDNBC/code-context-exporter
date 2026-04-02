@@ -17,3 +17,5 @@ dist/
 
 # CCP output
 ccp_ver*.txt
+
+code-context-exporter-0.0.3.vsix

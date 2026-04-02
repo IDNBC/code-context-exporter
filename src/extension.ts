@@ -80,6 +80,7 @@ export async function activate(context: vscode.ExtensionContext) {
     registerCheckboxListener(treeView, uiState.selectedPaths);
 
     // --- 6. コマンド登録 ---
+    // --- 6. コマンド登録 ---
     const runGenerate = async () => {
         if (uiState.selectedPaths.size === 0) {
             vscode.window.showWarningMessage("サイドバーでファイルにチェックを入れてください。");
@@ -105,27 +106,29 @@ export async function activate(context: vscode.ExtensionContext) {
     };
 
     context.subscriptions.push(
+        // 1. 生成実行
         vscode.commands.registerCommand('ccp.runGenerate', runGenerate),
+
+        // 2. ツリーのリフレッシュ
         vscode.commands.registerCommand('ccp.refresh', refreshTree),
         
-        // --- selectAll コマンドの書き換え例 ---
+        // 3. すべて選択 (mainのロジックに統一)
         vscode.commands.registerCommand('ccp.selectAll', () => {
             if (!model) return;
-            
-            // 末尾のヘルパー関数を使用する（引数の型エラーが消えます）
             const allPaths: string[] = [];
-            // ファイルだけを抽出したい場合は addChildrenRecursive を使用
             addAllPathsRecursive(model.tree, allPaths);
-            
             allPaths.forEach(p => uiState.selectedPaths.add(p));
             treeDataProvider.refresh(model.tree);
         }),
+
+        // 4. すべて解除
         vscode.commands.registerCommand('ccp.clearAll', () => {
             if (!model) return;
             uiState.selectedPaths.clear();
             treeDataProvider.refresh(model.tree);
         })
         
+        // リリース版のため toggleRemoveComments は含めない
     );
 }
 
