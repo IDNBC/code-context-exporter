@@ -105,42 +105,33 @@ export async function activate(context: vscode.ExtensionContext) {
     };
 
     context.subscriptions.push(
+        // 1. 生成実行
         vscode.commands.registerCommand('ccp.runGenerate', runGenerate),
+
+        // 2. ツリーのリフレッシュ
         vscode.commands.registerCommand('ccp.refresh', refreshTree),
+
+        // 3. すべて選択 (重複を削除し、ヘルパー関数を使う方に統一)
         vscode.commands.registerCommand('ccp.selectAll', () => {
             if (!model) return;
-            const addAll = (node: any) => {
-                if (node.type === "file") uiState.selectedPaths.add(node.path);
-                node.children?.forEach(addAll);
-            };
-            addAll(model.tree);
-            treeDataProvider.refresh(model.tree);
-        }),
-        
-        vscode.commands.registerCommand('ccp.toggleRemoveComments', () => {
-            config.options.removeComments = !config.options.removeComments;
-            
-            const status = config.options.removeComments ? "ON" : "OFF";
-            vscode.window.showInformationMessage(`CCP: コメント削除モードを ${status} にしました。`);
-            
-            // 必要ならアイコンの状態を更新するためにツリーをリフレッシュ（任意）
-            // treeDataProvider.refresh(model?.tree); 
-        }),
-        // vscode.commands.registerCommand('ccp.clearAll', () => {
-        //     uiState.selectedPaths.clear();
-        //     if (model) treeDataProvider.refresh(model.tree);
-        // })
-        // --- selectAll コマンドの書き換え例 ---
-        vscode.commands.registerCommand('ccp.selectAll', () => {
-            if (!model) return;
-            
-            // 末尾のヘルパー関数を使用する（引数の型エラーが消えます）
             const allPaths: string[] = [];
-            // ファイルだけを抽出したい場合は addChildrenRecursive を使用
             addAllPathsRecursive(model.tree, allPaths);
-            
             allPaths.forEach(p => uiState.selectedPaths.add(p));
             treeDataProvider.refresh(model.tree);
+        }),
+
+        // 4. すべて解除
+        vscode.commands.registerCommand('ccp.clearAll', () => {
+            if (!model) return;
+            uiState.selectedPaths.clear();
+            treeDataProvider.refresh(model.tree);
+        }),
+
+        // 5. コメント削除モードの切り替え
+        vscode.commands.registerCommand('ccp.toggleRemoveComments', () => {
+            config.options.removeComments = !config.options.removeComments;
+            const status = config.options.removeComments ? "ON" : "OFF";
+            vscode.window.showInformationMessage(`CCP: コメント削除モードを ${status} にしました。`);
         })
     );
 }
