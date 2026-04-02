@@ -1,12 +1,12 @@
 {
   "name": "code-context-exporter",
   "displayName": "Code Context Exporter",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "publisher": "iida-nobuchiyo",
   "icon": "assets/CodeExporter.png",
   "repository": {
-  "type": "git",
-  "url": "https://github.com/IDNBC/code-context-exporter.git"
+    "type": "git",
+    "url": "https://github.com/IDNBC/code-context-exporter.git"
   },
   "engines": {
     "vscode": "^1.80.0"
@@ -59,9 +59,9 @@
     "menus": {
       "view/title": [
         {
-        "command": "ccp.runGenerate",
-        "when": "view == ccp-view",
-        "group": "navigation@0"
+          "command": "ccp.runGenerate",
+          "when": "view == ccp-view",
+          "group": "navigation@0"
         },
         {
           "command": "ccp.selectAll",
@@ -70,7 +70,7 @@
         },
         {
           "command": "ccp.clearAll",
-          "group": "navigation@3", 
+          "group": "navigation@3",
           "when": "view == ccp-view"
         },
         {
